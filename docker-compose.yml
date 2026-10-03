@@ -1,0 +1,27 @@
+# docker compose up -d --build
+# Escucha solo en 127.0.0.1:8080: expónlo con tu túnel (cloudflared, etc.) apuntando a http://127.0.0.1:8080
+services:
+  rana-qr:
+    build: .
+    image: rana-qr:latest
+    container_name: rana-qr
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      TRUST_PROXY: "1"        # detrás del túnel: toma la IP real del visitante (CF-Connecting-IP)
+      LIMITE_HORA: "30"       # QR que puede crear una misma IP por hora
+      MAX_MODELOS: "300"      # tope de QR guardados en el sitio
+      # DESTINOS_PERMITIDOS: "tudominio.com,otro.com"   # opcional: solo permite QR hacia estos dominios
+      # CLAVE_CREAR: "pon-una-clave-larga"              # opcional: cierra la creación con una clave
+    volumes:
+      - rana-datos:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  rana-datos:

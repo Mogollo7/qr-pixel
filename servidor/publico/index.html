@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rana QR · Crear</title>
+<meta name="description" content="Carga un modelo 3D, conviértelo en cubos y haz que se transforme en tu código QR.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 rx=%273%27 fill=%27%232f7d1f%27/%3E%3Crect x=%274%27 y=%274%27 width=%278%27 height=%278%27 fill=%27%23ffffff%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/css/sitio.css">
+<link rel="stylesheet" href="/css/crear.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.182.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/"
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<script src="/js/visor.js"></script>
+<script type="module" src="/js/crear.js"></script>
+</head>
+<body class="crear">
+<header class="top">
+  <h1>Rana QR</h1>
+  <p>Carga un modelo 3D, ponle un enlace y mira cómo se transforma.</p>
+</header>
+
+<main class="grid">
+  <section class="panel" aria-label="Pasos">
+    <div class="paso" id="paso1">
+      <h2><span class="n">1</span> Modelo 3D</h2>
+      <label class="drop" id="drop" for="glb">
+        <input type="file" id="glb" accept=".glb,model/gltf-binary">
+        <span id="dropTxt">Elige un archivo <b>.glb</b> o arrástralo aquí</span>
+      </label>
+      <p class="nota" id="glbEstado">Se convierte en cubos en tu navegador; el archivo no se sube a ningún servidor.</p>
+      <div class="ajustes" id="ajustes" hidden>
+        <div class="fila"><label for="res">Detalle</label><output id="resO">64</output><input type="range" id="res" min="24" max="128" step="2" value="64"></div>
+        <div class="fila"><label for="rotY">Girar</label><output id="rotYO">0°</output><input type="range" id="rotY" min="-180" max="180" step="5" value="0"></div>
+        <div class="fila"><label for="rotX">Inclinar</label><output id="rotXO">0°</output><input type="range" id="rotX" min="-90" max="90" step="5" value="0"></div>
+        <div class="fila"><label for="cols">Estilo de bloque</label><output id="colsO">Natural</output><input type="range" id="cols" min="0" max="12" step="1" value="0"></div>
+      </div>
+    </div>
+
+    <div class="paso" id="paso2">
+      <h2><span class="n">2</span> Enlace del QR</h2>
+      <label for="enlace" class="etq">¿A dónde debe llevar?</label>
+      <input type="url" id="enlace" inputmode="url" autocomplete="off" placeholder="https://tu-sitio.com" maxlength="1000">
+      <p class="nota err" id="enlaceErr" hidden></p>
+      <label for="nombre" class="etq">Nombre</label>
+      <input type="text" id="nombre" maxlength="60" placeholder="Ej.: Sapo del congreso" autocomplete="off">
+    </div>
+
+    <div class="paso" id="paso3">
+      <h2><span class="n">3</span> Guardar</h2>
+      <div id="claveCrear" hidden>
+        <label for="clave" class="etq">Clave para crear en este sitio</label>
+        <input type="password" id="clave" autocomplete="off" placeholder="Te la dio quien administra el sitio">
+      </div>
+      <div class="acciones">
+        <button id="guardar" type="button" class="primary" disabled>Guardar</button>
+      </div>
+      <p class="nota" id="estado" aria-live="polite">Carga un modelo y escribe el enlace para poder guardar.</p>
+      <div class="listo" id="listo" hidden>
+        <b>Tu enlace final</b>
+        <a id="linkFinal" href="#" target="_blank" rel="noopener"></a>
+        <div class="acciones">
+          <button id="copiar" type="button" class="sec">Copiar enlace</button>
+          <a id="abrirFinal" class="boton sec" href="#" target="_blank" rel="noopener">Abrir</a>
+          <button id="otro" type="button" class="sec">Crear otro</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vista" aria-label="Vista previa">
+    <div id="stage" tabindex="0" role="img" aria-label="Vista previa de la figura de cubos. Acerca el mouse para verla como QR.">
+      <div id="vacio" class="vacio">La vista previa aparece aquí.</div>
+    </div>
+    <div class="barra">
+      <span id="badge" class="badge" role="status" aria-live="polite">Sin modelo</span>
+      <span id="datos" class="datos"></span>
+      <button id="qrbtn" type="button" class="sec" hidden>Ver QR</button>
+    </div>
+  </section>
+</main>
+
+<section class="guardados" aria-label="Mis QR">
+  <h2>Mis QR</h2>
+  <p class="nota" id="listaEstado"></p>
+  <ul id="lista" class="lista"></ul>
+  <p class="nota">Esta lista se guarda en este navegador. Si lo borras ya no podrás eliminar desde aquí los QR que creaste, aunque sus enlaces seguirán funcionando. <a href="/admin/">Editor avanzado</a></p>
+</section>
+</body>
+</html>

@@ -1,0 +1,9 @@
+node_modules/
+.env
+servidor/datos/
+entrada/
+salida/
+salida-*/
+capturas*/
+cubizar/pruebas/capturas/
+.claude/settings.local.json

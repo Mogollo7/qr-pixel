@@ -1,0 +1,10 @@
+{
+  "name": "cubizar",
+  "version": "1.0.0",
+  "description": "Convierte modelos GLB en rana de cubos y genera su QR, de forma automática",
+  "type": "module",
+  "bin": { "cubizar": "cubizar.mjs" },
+  "scripts": { "test": "node cubizar.mjs --probar" },
+  "dependencies": { "puppeteer-core": "^24.0.0" },
+  "license": "MIT"
+}

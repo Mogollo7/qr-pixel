@@ -1,0 +1,14 @@
+.git
+.gitignore
+.claude
+node_modules
+cubizar
+entrada
+salida
+salida-*
+capturas*
+servidor/datos
+servidor/.env
+*.md
+Dockerfile
+docker-compose.yml

@@ -1,0 +1,47 @@
+/* Página de creación (/) */
+body.crear { overflow: auto; height: auto; min-height: 100%; padding-bottom: 32px; }
+.top { padding: 20px 16px 8px; max-width: 1200px; margin: 0 auto; }
+.top h1 { margin: 0; font-size: 22px; color: var(--accent); letter-spacing: .02em; }
+.top p { margin: 4px 0 0; color: var(--muted); }
+.grid { display: grid; grid-template-columns: minmax(300px, 400px) 1fr; gap: 16px; max-width: 1200px; margin: 12px auto 0; padding: 0 16px; align-items: start; }
+.panel { display: grid; gap: 12px; min-width: 0; }
+.paso { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px 16px; min-width: 0; }
+.paso h2 { margin: 0 0 10px; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+.n { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--accent-fg); font-size: 13px; }
+.drop { display: grid; place-items: center; min-height: 92px; padding: 12px; border: 2px dashed var(--line); border-radius: 12px; color: var(--muted); text-align: center; cursor: pointer; }
+.drop:hover, .drop.sobre { border-color: var(--accent); color: var(--fg); }
+.drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.drop:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.nota { margin: 8px 0 0; font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+.nota.err { color: var(--danger); }
+.etq { display: block; margin: 10px 0 4px; font-size: 13px; color: var(--muted); }
+input[type="url"], input[type="text"], input[type="password"] { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); font: inherit; }
+.ajustes { margin-top: 10px; display: grid; gap: 6px; }
+.fila { display: grid; grid-template-columns: 1fr auto; gap: 0 8px; align-items: center; }
+.fila output { color: var(--muted); font-variant-numeric: tabular-nums; }
+.fila input[type="range"] { grid-column: 1 / -1; width: 100%; accent-color: var(--accent); }
+.acciones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.listo { margin-top: 14px; padding: 12px; border: 1px solid var(--accent); border-radius: 12px; display: grid; gap: 6px; }
+.listo a#linkFinal { overflow-wrap: anywhere; }
+.vista { display: grid; grid-template-rows: minmax(360px, 62vh) auto; min-width: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--surface); position: sticky; top: 12px; }
+.vacio { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); }
+.barra { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 10px 14px; border-top: 1px solid var(--line); }
+.badge { padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+.badge.ok { color: var(--ok); border-color: var(--ok); }
+.badge.bad { color: var(--danger); border-color: var(--danger); }
+.badge.warn { color: var(--warn); border-color: var(--warn); }
+.datos { color: var(--muted); font-size: 13px; flex: 1 1 160px; }
+.guardados { max-width: 1200px; margin: 20px auto 0; padding: 0 16px; }
+.guardados-cab { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.guardados h2 { font-size: 16px; margin: 0; }
+.lista { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
+.lista li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: center; }
+.lista .t { min-width: 0; }
+.lista .t b { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lista .t span { display: block; color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lista .acc { display: flex; gap: 6px; flex-wrap: wrap; }
+.lista .acc button, .lista .acc a { padding: 5px 12px; font-size: 13px; }
+@media (max-width: 860px) {
+  .grid { grid-template-columns: 1fr; }
+  .vista { position: static; grid-template-rows: 58vh auto; order: -1; }
+}

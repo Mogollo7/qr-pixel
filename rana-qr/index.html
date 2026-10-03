@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rana QR</title>
+<meta name="description" content="Generador de códigos QR 3D con ranas de cubos totalmente personalizables.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/app.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.182.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/"
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+</head>
+<body>
+<div id="app">
+  <aside id="panel" aria-label="Controles">
+    <header class="brand">
+      <h1>Rana QR</h1>
+      <p>Una rana de cubos que se convierte en QR</p>
+    </header>
+    <nav id="tabs" role="tablist" aria-label="Secciones"></nav>
+    <div id="tabbody"></div>
+  </aside>
+  <main id="stage">
+    <div id="viewport"></div>
+    <div id="hud">
+      <div id="scan" class="badge" role="status" aria-live="polite">Verificando…</div>
+      <div id="stats" class="badge muted"></div>
+      <button id="morph" class="cta" aria-pressed="false">Convertir en QR</button>
+      <div id="views" class="seg">
+        <button data-view="iso" title="Vista 3/4">3/4</button>
+        <button data-view="front" title="Vista frontal">Frente</button>
+        <button data-view="top" title="Vista cenital">Cenital</button>
+        <button data-view="side" title="Vista lateral">Lateral</button>
+        <button id="spin" title="Rotación automática" aria-pressed="false">Girar</button>
+      </div>
+    </div>
+    <div id="toast" role="alert" hidden></div>
+  </main>
+</div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

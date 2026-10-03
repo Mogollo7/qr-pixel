@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rana QR</title>
+<meta name="description" content="Una figura de cubos que se convierte en un código QR.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 rx=%273%27 fill=%27%232f7d1f%27/%3E%3Crect x=%274%27 y=%274%27 width=%278%27 height=%278%27 fill=%27%23ffffff%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/css/sitio.css">
+</head>
+<body class="ver">
+<main id="ver">
+  <div id="stage" tabindex="0" role="img" aria-label="Figura 3D hecha de cubos. Acerca el mouse para verla como código QR; haz clic en el QR para abrir el enlace.">
+    <div id="msg" hidden></div>
+  </div>
+  <footer id="bar">
+    <div id="info" aria-live="polite"></div>
+    <div class="acts">
+      <button id="anim" type="button" class="sec" aria-pressed="true">Animación: sí</button>
+      <button id="qrbtn" type="button" class="sec" hidden>Ver QR</button>
+      <a id="open" class="primary" href="#" hidden rel="noopener noreferrer">Abrir enlace</a>
+    </div>
+  </footer>
+</main>
+<noscript>Esta página necesita JavaScript para mostrar el modelo 3D.</noscript>
+<script src="/js/three.min.js"></script>
+<script src="/js/visor.js"></script>
+<script src="/js/ver.js"></script>
+</body>
+</html>
